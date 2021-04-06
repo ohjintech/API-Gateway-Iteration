@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBar from '../Components/SearchBar.jsx'
-import SearchResults from '../Components/SearchResults'
+import SearchResults from '../Components/SearchResults.jsx'
 
 class SearchContainer extends React.Component{
   constructor(props){

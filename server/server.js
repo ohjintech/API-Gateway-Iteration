@@ -24,13 +24,15 @@ mongoose.connection.once('open', () => {
 app.use(express.json())
 app.use(cookieParser())
 
+// Serve static file build route 
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
 // serve the home page
 app.get('/', 
-    sessionController.verifyLogin,  
+    sessionController.verifyLogin,
     (req, res) => {
         if (res.locals.isLogged) res.send('is logged')
-        res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
+        res.status(200).sendFile(path.join(__dirname, '../index.html'));
     }
 );
 

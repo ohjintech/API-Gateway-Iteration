@@ -1,71 +1,46 @@
-/* eslint-disable no-unused-vars */
-const webpack = require('webpack');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  entry: [
-    // entry point of our app
-    './client/index.js',
-  ],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-    filename: 'bundle.js',
-  },
-  devtool: 'eval-source-map',
-  mode: 'development',
-  devServer: {
-    host: 'localhost',
-    port: 8080,
-    // match the output path
-    contentBase: path.resolve(__dirname, 'dist'),
-    // enable HMR on the devServer
-    hot: true,
-    // match the output 'publicPath'
-    publicPath: '/',
-    // fallback to root for other urls
-    // historyApiFallback: true,
-
-    // inline: true,
-
-    // headers: { 'Access-Control-Allow-Origin': '*' },
-    /**
-     * proxy is required in order to make api calls to
-     * express server while using hot-reload webpack server
-     * routes api fetch requests from localhost:8080/api/* (webpack dev server)
-     * to localhost:3000/api/* (where our Express server is running)
-     */
-     proxy: {
-      '/': 'http://localhost:3000'
+const rules = [{
+  test: /\.(js|jsx|ts)$/,
+  loader: 'babel-loader',
+  exclude: /node_modules/,
+  options: {
+    presets: ['@babel/react', '@babel/env']
     }
   },
-  module: {
-    rules: [
-      {
-        test: /.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        },
-      },
-      {
-        test: /.(css|scss)$/,
-        exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
-      }
+  {
+    test: /\.s[ac]ss$/i,
+    use: [
+      // Creates `style` nodes from JS strings
+      "style-loader",
+      // Translates CSS into CommonJS
+      "css-loader",
+      // Compiles Sass to CSS
+      "sass-loader",
     ],
+  }
+];
+
+module.exports = {
+  mode: 'development',
+  entry : path.resolve(__dirname, './client/index.js'),
+  output:{
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
+    filename: 'bundle.js'
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './client/index.html',
-    }), 
-  ],
+  module: {
+    rules
+  },
   resolve: {
-    // Enable importing JS / JSX files without specifying their extension
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
-};
+  devServer: {
+    publicPath: '/build',
+    proxy: {
+      '/': {
+        target: 'http://localhost:3000/'
+      },
+    },
+  }
+}
