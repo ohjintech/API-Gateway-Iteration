@@ -10,10 +10,19 @@ body{
 
 }
 
+
 .header{
     background-color: pink;
     
 }
+
+.form{
+    position: relative;
+    width: 80%;
+    left: 3rem;
+    padding: 0.5rem;
+}
+
 
 .ribboncontainer{
     display: flex;
@@ -93,12 +102,11 @@ body{
     box-shadow: 5px 3px 3px black;
 }
 
-.form{
-    position: relative;
-    width: 80%;
-    left: 3rem;
-    padding: 0.5rem;
+.modalStyle {
+
 }
+
+
 
 .wunderpuss{
     height: 20rem;
