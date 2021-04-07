@@ -71,11 +71,15 @@ class SearchContainer extends React.Component{
       return(
         
         <div className='searchcontainer'>
-            <SearchBar onEnter={this.performSearch} />
+          <SearchBar onEnter={this.performSearch} />
          
-            <div className='searchresults'>
+          <div style = {{marginTop: '1em', display: 'flex', flexDirection: 'row'}}>
+            <div style = {{display: 'flex', flex: 1, flexDirection: 'column'}}>
               {rowsArray}
-         </div>
+            </div>
+            <div style = {{display: 'flex', flex: 1, backgroundColor: "red"}} />
+              
+          </div>
         </div>
        
        )
