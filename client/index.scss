@@ -230,3 +230,14 @@ margin-left:600px; */
     padding: 2em;
 
 }
+
+.codeSnippet {
+    display: flex;
+    flex: 1;
+    border-color: black;
+    border-style: dashed;
+    border-width: 2px;
+    border-radius: 5%;
+    background-color: #0a1f40;
+    color: white;
+}
