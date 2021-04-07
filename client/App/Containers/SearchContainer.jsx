@@ -7,7 +7,11 @@ class SearchContainer extends React.Component{
     super(props)
     this.state = {
       books: [],
-      searchResults: null
+      searchResults: null,
+      codeSnippetObj : {
+        key: 'Example Object',
+        apiKey: `Google's API`
+      },
     }
 
     this.performSearch = this.performSearch.bind(this)
@@ -51,12 +55,13 @@ class SearchContainer extends React.Component{
         })
         updatedState.books = bookArray
         console.log('updated state',updatedState)
-        this.setState(updatedState)
+        this.setState({updatedState})
 
       })
 
       .catch(err => console.log(err))
       }
+  
   
   render(){
     //container array 
@@ -67,18 +72,36 @@ class SearchContainer extends React.Component{
     for (let i = 0; i < this.state.books.length; i++){
       rowsArray.push(<SearchResults key = {i} books={this.state.books[i]}/>)
     }
-    
+
       return(
         
         <div className='searchcontainer'>
-            <SearchBar onEnter={this.performSearch} />
-         
-            <div className='searchresults'>
-              {rowsArray}
-         </div>
+          <SearchBar onEnter={this.performSearch} />
+        
+          {/* Results and codesnipped */}
+          {this.state.books.length > 1?
+            <div style = {{marginTop: '1em', display: 'flex', flexDirection: 'row'}}> 
+              {/*Results  */}
+              <div style = {{display: 'flex', flex: 1, flexDirection: 'column'}}>
+              <strong style = {{alignSelf: 'center'}} >Search Results: </strong> 
+                {rowsArray}
+              </div>
+            {/* Code Snippet */}
+              <div style = {{display: 'flex', flex: 1, flexDirection: 'column'}}>
+                <strong style = {{alignSelf: 'center'}}>API Returned Object: </strong> 
+                <pre className ='codeSnippet'>
+                  <code>
+                    <br />
+                    {JSON.stringify(this.state.codeSnippetObj, null, 2)}
+                  </code>
+                </pre>
+              </div>
+            </div>
+          :<div />
+          }
+          
         </div>
-       
-       )
+      )
   }
 }
 
