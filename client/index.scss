@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -103,10 +104,17 @@ body{
 }
 
 .modalStyle {
+    top: 50%;
+    left: 50%;
+}
+
+#signup-modal-title {
 
 }
 
+#signup modal-description {
 
+}
 
 .wunderpuss{
     height: 20rem;
