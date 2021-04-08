@@ -26,7 +26,7 @@ class SearchContainer extends React.Component{
     // API fetch logic happens at backend
     // prop drill response into to search results
     performSearch(string){
-      this.setState({loading: true,
+      this.setState({loading: true, showSnippet: false,
       books: []});
 
       let tempArray = string.split(' ').filter(el => el !== '');
