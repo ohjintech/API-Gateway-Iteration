@@ -6,8 +6,8 @@ import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-// const [ details, setDetails ] = useState({});
 
+// const [ details, setDetails ] = useState({});
 
 function getModalStyle() {
   const top = 50;
@@ -55,32 +55,65 @@ const SignupButton = () => {
   const handleClose = () => {
     setShow(false);
   };
-    
-
+   
   const signUpModalBody = (
+    
     <div style={modalStyle} className={classes.paper}>
+
       <h2 id="signup-modal-title">Sign Up</h2>
+      
       <form className={classes.root} noValidate autoComplete="off">
+        
         <div>
-        <TextField required id="outlined-basic" label="Username" variant="outlined" />
-        <TextField required id="outlined-basic" label="Password" type="password" autoComplete="current-password" variant="outlined" />
+          <TextField 
+            required id="outlined-basic" 
+            label="Username" 
+            variant="outlined" 
+            value=""
+          />
+          <TextField required 
+            id="outlined-basic" 
+            label="Password" 
+            type="password" 
+            autoComplete="current-password" 
+            variant="outlined" 
+          />
         </div>
+        
         <div>
-        <TextField id="outlined-basic" label="Email Address" variant="outlined" />
-        <TextField id="outlined-basic" label="SSN" variant="outlined" helperText="* Required"/>
+          <TextField 
+            id="outlined-basic" 
+            label="Email Address" 
+            variant="outlined" 
+          />
+          <TextField 
+            id="outlined-basic" 
+            label="SSN" 
+            variant="outlined" 
+            helperText="* Required"
+          />
         </div>
 
-        <Button variant="contained" color="primary">Complete</Button>
+        <Button 
+          variant="contained" 
+          color="primary"
+          onClick={() => console.log('SignUP submitted')}
+        >
+          Complete
+        </Button>
       </form>
     </div>
   );
 
     return(
       <div>
-        <Button onClick={handleOpen} variant="outlined" color="primary">
+        <Button 
+          onClick={handleOpen} 
+          variant="outlined" 
+          color="primary"
+        >
           Sign Up
         </Button>
-
 
         <Modal
           aria-labelledby="transition-modal-title"
@@ -101,7 +134,6 @@ const SignupButton = () => {
       //   </Link>
       //  </button>
        
-     
     )
 }
 
