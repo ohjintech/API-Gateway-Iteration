@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
   paper: {
     position: 'absolute',
     width: 450,
